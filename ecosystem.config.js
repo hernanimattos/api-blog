@@ -1,10 +1,11 @@
 module.exports = {
   apps : [{
     name: 'API',
-    script: './dist/index.js',
+    script: 'index.js',
     ignore_watch: ['node_modules', 'src'],
     watch: true,
     env: {
+    watch: true,
       NODE_ENV: 'development',
     },
   }],
