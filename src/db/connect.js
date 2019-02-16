@@ -6,9 +6,5 @@ const client = new Client({
   password: '@123',
   port: 5432,
 });
-client.connect();
 
-client.query('SELECT NOW()', (err, res) => {
-  console.log(err, res);
-  client.end()
-})
+export default client;
