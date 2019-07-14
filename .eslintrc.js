@@ -19,8 +19,8 @@ module.exports = {
     extends: 'airbnb-base',
     // required to lint *.vue files
     plugins: [
-        'vue',
-        'html'
+        // 'vue',
+        // 'html'
     ],
     // check if imports actually resolve
     settings: {
@@ -58,6 +58,8 @@ module.exports = {
             ignore: ['\\*']
         }],
         // disable camalcase
-        'camelcase': ['off'],
+				'camelcase': ['off'],
+				'class-methods-use-this': ['off'],
+				"indent": ["error", 2]
     }
 };

@@ -1,11 +1,12 @@
-const  path = require('path');
+const path = require('path');
 const nodeExternals = require('webpack-node-externals');
+
 module.exports = {
-  entry:  path.resolve(__dirname,'src/app.js'),
+  entry: path.resolve(__dirname, 'src/app.js'),
   devtool: 'inline-source-map',
-  output:{
+  output: {
     path: path.resolve(__dirname),
-    filename: 'index.js'
+    filename: 'index.js',
   },
   externals: [nodeExternals()],
   module: {
@@ -17,11 +18,16 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env'],
-            plugins: ['@babel/plugin-proposal-object-rest-spread']
-          }
-        }
+            plugins: ['@babel/plugin-proposal-object-rest-spread'],
+          },
+        },
       },
-    ]
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ['babel-loader', 'eslint-loader'],
+      },
+    ],
   },
   mode: 'development',
   target: 'node',
