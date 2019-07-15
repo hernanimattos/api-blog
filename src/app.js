@@ -13,12 +13,13 @@ class Api {
   main() {
     // const app = express();
     const rootSchema = gql`
-    type Hello {
-      name: String
+    type User extends Qury{
+      firstName: String
+      email: String!
+
     }
 		type Query {
-			"A simple type for getting started!"
-			hello: Hello
+			user: User
     }
     schema {
       query: Query
@@ -28,25 +29,25 @@ class Api {
     // Provide resolver functions for your schema fields
     const resolvers = {
       Query: {
-        hello: () => ({ name: 'nois' }),
+        user: () => ({ name: 'nois' }),
       },
     };
     const server = new ApolloServer({
       typeDefs: [rootSchema],
       resolvers,
-      // endpoint: 'teste',
-      // query: { ...resolvers.Query },
-      // playground: {
-      //   settings: {
-      //     'editor.theme': 'dark',
-      //   },
-      //   tabs: [
-      //     {
-      //       endpoint: 'graphql',
-      //       query: { ...resolvers.Query },
-      //     },
-      //   ],
-      // },
+      endpoint: 'teste',
+      query: { ...resolvers.Query },
+      playground: {
+        settings: {
+          'editor.theme': 'dark',
+        },
+        tabs: [
+          {
+            endpoint: 'graphql',
+            query: { ...resolvers.Query },
+          },
+        ],
+      },
     });
 
 
