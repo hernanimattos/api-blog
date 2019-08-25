@@ -35,7 +35,6 @@ module.exports = {
         // don't require .vue extension when importing
         'import/extensions': ['error', 'always', {
             js: 'never',
-            vue: 'never'
         }],
         // disallow reassignment of function parameters
         // disallow parameter object manipulation except for specific exclusions
@@ -58,8 +57,8 @@ module.exports = {
             ignore: ['\\*']
         }],
         // disable camalcase
-				'camelcase': ['off'],
-				'class-methods-use-this': ['off'],
-				"indent": ["error", 2]
+        'camelcase': ['off'],
+        'class-methods-use-this': ['off'],
+        "indent": ["error", 2]
     }
 };

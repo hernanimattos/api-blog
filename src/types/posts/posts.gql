@@ -1,0 +1,6 @@
+type posts {
+  title: String!
+  date: String!
+  content: String!
+
+}

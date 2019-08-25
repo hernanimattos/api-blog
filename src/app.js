@@ -4,6 +4,16 @@ import {
   gql,
 } from 'apollo-server';
 
+import schemas from './utils/schemas';
+
+schemas().then((res) => {
+
+  console.log(res)
+
+})
+
+console.log(schemas, 'schemas');
+
 const port = 3000;
 class Api {
   constructor() {
@@ -13,11 +23,12 @@ class Api {
   main() {
     // const app = express();
     const rootSchema = gql`
-    type User extends Qury{
-      firstName: String
+    type User {
+      firstName: String!
       email: String!
-
+      role: Int!
     }
+
 		type Query {
 			user: User
     }
@@ -35,25 +46,12 @@ class Api {
     const server = new ApolloServer({
       typeDefs: [rootSchema],
       resolvers,
-      endpoint: 'teste',
       query: { ...resolvers.Query },
-      playground: {
-        settings: {
-          'editor.theme': 'dark',
-        },
-        tabs: [
-          {
-            endpoint: 'graphql',
-            query: { ...resolvers.Query },
-          },
-        ],
-      },
     });
 
 
-    server.listen(port, () => {
-      console.log(
-      `Example app listening on port ${port}!`); // eslint-disable-line
+    server.listen(port).then(({ url }) => {
+      console.log(`🚀 ta rodando na ${url}`);
     });
   }
 }
